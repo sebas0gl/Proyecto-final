@@ -108,16 +108,19 @@ float calcularPromedio(const std::vector<float>& notas) {
 // Función para mostrar resultados finales
 void mostrarResultados(const std::vector<std::string>& nombres, const std::vector<int>& ciclos, const std::vector<int>& cedulas, const std::vector<float>& promedios) {
     std::cout << "\n********** RESULTADOS FINALES **********\n";
-    std::cout << std::left << std::setw(25) << "Nombre completo"
+    std::cout << std::left << std::setw(30) << "Nombre completo"
               << std::setw(10) << "Ciclo"
               << std::setw(15) << "Cédula"
-              << std::setw(10) << "Promedio" << "\n";
-    std::cout << std::string(60, '-') << "\n";
+              << std::setw(10) << "Promedio"
+              << std::setw(12) << "Estado" << "\n";
+    std::cout << std::string(77, '-') << "\n";
 
     for (size_t i = 0; i < nombres.size(); ++i) {
-        std::cout << std::left << std::setw(25) << nombres[i]
+        std::string estado = promedios[i] >= 70.0 ? "Aprobado" : "Reprobado";
+        std::cout << std::left << std::setw(30) << nombres[i]
                   << std::setw(10) << ciclos[i]
                   << std::setw(15) << cedulas[i]
-                  << std::setw(10) << std::fixed << std::setprecision(2) << promedios[i] << "\n";
+                  << std::setw(10) << std::fixed << std::setprecision(2) << promedios[i]
+                  << std::setw(12) << estado << "\n";
     }
 }
